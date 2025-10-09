@@ -74,6 +74,28 @@ export default async function RootLayout({ children }) {
 				<meta name='color-scheme' content='dark light' />
 				<link rel='canonical' href='https://docs.sei.io' />
 				{/* Performance: avoid early preconnects to heavy third-parties */}
+				<Script id='ld-organization' type='application/ld+json' strategy='afterInteractive'>
+					{JSON.stringify({
+						'@context': 'https://schema.org',
+						'@type': 'Organization',
+						name: 'Sei Network',
+						url: 'https://docs.sei.io',
+						logo: 'https://docs.sei.io/icon.png'
+					})}
+				</Script>
+				<Script id='ld-website' type='application/ld+json' strategy='afterInteractive'>
+					{JSON.stringify({
+						'@context': 'https://schema.org',
+						'@type': 'WebSite',
+						name: 'Sei Docs',
+						url: 'https://docs.sei.io',
+						potentialAction: {
+							'@type': 'SearchAction',
+							target: 'https://docs.sei.io/search?q={search_term_string}',
+							'query-input': 'required name=search_term_string'
+						}
+					})}
+				</Script>
 			</head>
 			<body style={{ width: '100%', height: '100%' }}>
 				<Toaster position='bottom-left' />
